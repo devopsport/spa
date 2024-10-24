@@ -60,14 +60,6 @@ resource "aws_route53_record" "main" {
   ttl             = 60
 }
 
-# resource "aws_cloudfront_origin_access_control" "main" {
-#   name                              = "${var.project}-${var.env}-${var.service}"
-#   description                       = "Origin Access Control for S3 bucket"
-#   origin_access_control_origin_type = "s3"
-#   signing_behavior                  = "always"
-#   signing_protocol                  = "sigv4"
-# }
-
 resource "aws_cloudfront_distribution" "main" {
   aliases             = [var.domain]
   enabled             = true
@@ -77,9 +69,8 @@ resource "aws_cloudfront_distribution" "main" {
   http_version        = "http2"
 
   origin {
-    domain_name              = aws_s3_bucket.main.bucket_regional_domain_name
-    origin_id                = aws_s3_bucket.main.id
-    # origin_access_control_id = aws_cloudfront_origin_access_control.main.id
+    domain_name = aws_s3_bucket.main.bucket_regional_domain_name
+    origin_id   = aws_s3_bucket.main.id
   }
 
   default_cache_behavior {
