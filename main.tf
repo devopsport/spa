@@ -1,5 +1,5 @@
 resource "aws_s3_bucket" "main" {
-  bucket_prefix       = "${var.project}-${var.env}-${var.service}"
+  bucket              = "${var.project}-${var.env}-${var.service}"
   force_destroy       = true
   object_lock_enabled = false
 
