@@ -121,7 +121,7 @@ resource "aws_cloudfront_distribution" "main" {
 
 resource "aws_route53_record" "this" {
   zone_id = data.aws_route53_zone.main.zone_id
-  name    = "${var.service}.${var.project}.${var.env}.${var.aws_route53_zone}"
+  name    = var.domain
   type    = "A"
 
   alias {
