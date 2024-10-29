@@ -78,9 +78,9 @@ resource "aws_cloudfront_distribution" "main" {
     viewer_protocol_policy = "redirect-to-https"
     allowed_methods        = ["DELETE", "GET", "HEAD", "OPTIONS", "PATCH", "POST", "PUT"]
     cached_methods         = ["GET", "HEAD"]
-    min_ttl                = 300
-    default_ttl            = 300
-    max_ttl                = 300
+    min_ttl                = 0
+    default_ttl            = 0
+    max_ttl                = 0
 
     forwarded_values {
       query_string = false
